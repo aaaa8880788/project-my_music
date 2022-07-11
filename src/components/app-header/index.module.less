@@ -1,0 +1,73 @@
+.wrap{
+    height: 75px;
+    background-color: #242424;
+    .top_box{
+        height: 70px;
+        display: flex;
+        .left_box{
+            width: 176px;
+            a{
+                display: block;
+                text-indent: -9999px;
+                background: url('@/assets/image/sprite_01.png') no-repeat 0 0;
+                height: 100%;
+                width: 156px;
+                padding-right: 20px;
+            }
+        }
+        .center_box{
+            display: flex;
+            align-items: center;
+            text-align: center;
+            li{
+                width: 70px;
+                position: relative;
+                a{
+                    display: block;
+                    height: 70px;
+                    line-height: 70px;
+                }
+                a:hover{
+                    text-decoration: none;
+                    color: #fff;
+                    background-color: #000;
+                }
+                
+            }
+            li:last-child{
+                a{
+                    i{
+                        position: absolute;
+                        background: url('@/assets/image/sprite_01.png') no-repeat -192px 0;
+	                    width: 26px;
+	                    height: 13px;
+                    }
+                }
+            }
+        }
+        .right_box{
+            flex: 1;
+            // background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+    }
+    .bottom_box{
+        height: 5px;
+        background-color: #c20c0c;
+    }
+}
+
+.activeItem{
+    background-color: #000;
+        i{  
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: url('@/assets/image/sprite_01.png') no-repeat -226px 0;
+            width: 12px;
+            height: 6px;
+        }
+}

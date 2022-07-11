@@ -1,0 +1,66 @@
+.wrap {
+  height: 75px;
+  background-color: #242424;
+}
+.wrap .top_box {
+  height: 70px;
+  display: flex;
+}
+.wrap .top_box .left_box {
+  width: 176px;
+}
+.wrap .top_box .left_box a {
+  display: block;
+  text-indent: -9999px;
+  background: url('@/assets/image/sprite_01.png') no-repeat 0 0;
+  height: 100%;
+  width: 156px;
+  padding-right: 20px;
+}
+.wrap .top_box .center_box {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.wrap .top_box .center_box li {
+  width: 70px;
+  position: relative;
+}
+.wrap .top_box .center_box li a {
+  display: block;
+  height: 70px;
+  line-height: 70px;
+}
+.wrap .top_box .center_box li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background-color: #000;
+}
+.wrap .top_box .center_box li:last-child a i {
+  position: absolute;
+  background: url('@/assets/image/sprite_01.png') no-repeat -192px 0;
+  width: 26px;
+  height: 13px;
+}
+.wrap .top_box .right_box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.wrap .bottom_box {
+  height: 5px;
+  background-color: #c20c0c;
+}
+.activeItem {
+  background-color: #000;
+}
+.activeItem i {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: url('@/assets/image/sprite_01.png') no-repeat -226px 0;
+  width: 12px;
+  height: 6px;
+}
