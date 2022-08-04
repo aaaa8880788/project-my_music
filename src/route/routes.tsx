@@ -1,41 +1,45 @@
-import { Suspense } from "react";
-import type { LazyExoticComponent } from "react";
+import { Suspense, lazy } from "react";
+import type { LazyExoticComponent, FC } from "react";
 import { RouteObject } from "react-router-dom";
 import { Spin } from "antd";
 
-export interface CDRouteObject
-  extends Omit<RouteObject, "element" | "children"> {
-  component?: LazyExoticComponent<React.MemoExoticComponent<() => JSX.Element>>;
-  children?: CDRouteObject[];
+export const routes: Route[] = [
+  {
+    path: "/",
+    component: lazy(() => import("@/views/discover")),
+  },
+  {
+    path: "mine",
+    component: lazy(() => import("@/views/mine")),
+  },
+  {
+    path: "/friend",
+    component: lazy(() => import("@/views/friend")),
+  },
+];
+
+interface Route<T = any> extends Omit<RouteObject, "element" | "children"> {
+  component: LazyExoticComponent<FC<T>>;
+  children?: Route[];
 }
 
-export const getRoutes = (oldRoutes: CDRouteObject[]): RouteObject[] => {
-  let routes: RouteObject[] = [];
-  oldRoutes.forEach((route) => {
-    routes.push({
-      path: route.path,
+export const withRoutes = (routes: Route[]): RouteObject[] => {
+  const result: RouteObject[] = [];
+  routes.forEach((item) => {
+    const { component: Comp, children, ...reset } = item;
+    const route = {
+      ...reset,
       element: (
-        <Suspense
-          fallback={
-            <>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  height: "100vh",
-                }}
-              >
-                <Spin tip="加载中..." />
-              </div>
-            </>
-          }
-        >
-          {route.component && <route.component />}
+        <Suspense fallback={<Spin />}>
+          <Comp />
         </Suspense>
       ),
-      children: route.children && getRoutes(route.children),
-    });
+      ...(Array.isArray(children) &&
+        children.length > 0 && {
+          children: withRoutes(children),
+        }),
+    };
+    result.push(route);
   });
-  return routes;
+  return result;
 };

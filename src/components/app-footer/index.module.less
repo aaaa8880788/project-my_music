@@ -1,0 +1,62 @@
+.wrapper{
+    position: relative;
+    height: 172px;
+    border-top: 1px solid #d3d3d3;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    .center{
+        height: 115px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .left_box{
+            width: 520px;
+            .left_box_title{
+                display: flex;
+                li:nth-child(2n){
+                   margin: 0 5px;
+                }
+                li{
+                    a{
+                        color: rgb(149, 149, 149);
+                    }
+                    span{
+                        color: rgb(149, 149, 149);
+                    }
+                }
+            }
+            .left_box_belong{
+                margin: 5px 0;
+                span:nth-child(1){
+                    margin-right: 20px;
+                }
+            }
+            .left_box_safe{
+                margin: 5px 0;
+                a:nth-child(1){
+                    margin-right: 20px;
+                }
+            }
+        }
+        .right_box{
+            width: 420px;
+            ul{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                text-align: center;
+                li{
+                    .image{
+                        background: url('@/assets/image/sprite_footer_02.png') no-repeat 0 0;
+                        background-size: 104px 444px;
+                        width: 44px;
+                        height: 44px;
+                        margin: 5px auto;
+                    }
+                }
+                
+            }
+        }
+    }
+    
+}
